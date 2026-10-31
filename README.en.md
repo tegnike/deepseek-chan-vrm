@@ -75,12 +75,6 @@ The fixes made before release (expressions, blinking, fingers, skirt, tail, the 
 - **The expressions are shape keys made with scripts.** Shape keys on `Head` are registered as part expressions (`detail_...`), and the preset expressions combine them.
 - **Production names remain.** The Blend file has scenes and collections whose names start with `CharaKit_`. Charakuru used them to manage production; they do not affect the VRM.
 
-## Issues and feedback
-
-If anything bothers you, please let me know in [Issues](https://github.com/tegnike/deepseek-chan-vrm/issues). I will fix it.
-
-Please note that I am not a 3D modeling expert, so I make the fixes with AI.
-
 ## Changelog
 
 - 2026-10-31: Released the version with the gap at the base of the neck fixed

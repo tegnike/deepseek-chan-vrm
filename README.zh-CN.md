@@ -75,12 +75,6 @@ DeepSeek-chan 是以 AI DeepSeek 为原型的粉丝角色。角色的详细介�
 - **表情是用脚本制作的形态键。** `Head` 的形态键被登记为部件表情（`detail_...`），预设表情由它们组合而成。
 - **保留了制作管理用的名称。** Blend 文件中有以 `CharaKit_` 开头的场景和集合。这些是 Charakuru 在制作时用于管理的名称，与 VRM 的运行无关。
 
-## 问题与反馈
-
-如果有在意的地方，请在 [Issues](https://github.com/tegnike/deepseek-chan-vrm/issues) 中告诉我，我会进行修正。
-
-不过我不是 3D 建模的专家，修正会借助 AI 完成，敬请谅解。
-
 ## 更新记录
 
 - 2026-10-31：发布修正了脖子根部缝隙的版本
