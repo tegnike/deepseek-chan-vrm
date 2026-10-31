@@ -35,19 +35,19 @@ DeepSeek-chan is a fan character based on the AI DeepSeek. To learn more about t
 
 ## Terms of use
 
-Follow the terms registered in the VRM ([VRM Public License 1.0](https://vrm.dev/licenses/1.0/)).
+This model is released under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). This applies to both `DeepSeek-chan.vrm` and `DeepSeek-chan.blend`.
 
-| Item | Terms |
-| --- | --- |
-| Author | ニケ (Nike) |
-| Use as an avatar | Anyone |
-| Commercial use | Allowed for individuals' profit; not allowed for corporations |
-| Credit | Required |
-| Modification | Allowed |
-| Redistribution | Not allowed |
-| Excessively sexual, excessively violent, political or religious, antisocial, or hateful use | Not allowed |
+- Credit: Required. Please include the credits below.
+- Commercial use: Not allowed.
+- Modification and redistribution: Allowed. If you publish a modified version, release it under the same CC BY-NC-SA 4.0.
 
-Treat `DeepSeek-chan.blend` under the same terms as the VRM.
+The original character design is released under CC BY-NC-SA 4.0, so this model uses the same license. These terms are also registered in the VRM metadata. See [LICENSE](LICENSE) for the full license text.
+
+## Credits
+
+- Original character 溟月 (Mingyue): 上善无形 (Shangshan Wuxing) ([original post](https://www.bilibili.com/opus/1231977657712771073), CC BY-NC-SA 4.0)
+- Maid design: ZipZipPipe ([usage statement](https://t.bilibili.com/1231980045693616162), CC BY-NC-SA 4.0)
+- 3D model: ニケ (Nike)
 
 ## Made with Charakuru
 
@@ -84,3 +84,4 @@ Please note that I am not a 3D modeling expert, so I make the fixes with AI.
 ## Changelog
 
 - 2026-10-31: Released the version with the gap at the base of the neck fixed
+- 2026-10-31: Changed the license to CC BY-NC-SA 4.0 to match the original character design

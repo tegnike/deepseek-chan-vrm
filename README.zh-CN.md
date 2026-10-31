@@ -35,19 +35,19 @@ DeepSeek-chan 是以 AI DeepSeek 为原型的粉丝角色。角色的详细介�
 
 ## 使用条款
 
-请遵守 VRM 中登记的使用条款（[VRM 公共许可证 1.0](https://vrm.dev/licenses/1.0/)）。
+本模型以 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans) 发布，适用于 `DeepSeek-chan.vrm` 和 `DeepSeek-chan.blend`。
 
-| 项目 | 条款 |
-| --- | --- |
-| 作者 | ニケ（Nike） |
-| 作为虚拟形象使用 | 任何人均可 |
-| 商业使用 | 个人营利可以，法人不可以 |
-| 署名 | 需要 |
-| 修改 | 可以 |
-| 再分发 | 不可以 |
-| 过度色情、过度暴力、政治或宗教目的、反社会或仇恨目的的使用 | 不可以 |
+- 署名：需要。请注明下方的「署名信息」。
+- 商业使用：不可以。
+- 修改和再分发：可以。公开修改后的作品时，请同样以 CC BY-NC-SA 4.0 发布。
 
-`DeepSeek-chan.blend` 也请按照与 VRM 相同的条款使用。
+由于原始角色设计以 CC BY-NC-SA 4.0 发布，本模型也采用相同的许可证。VRM 的元数据中也登记了这些条款。完整的许可证文本请参阅 [LICENSE](LICENSE)。
+
+## 署名信息
+
+- 原作角色「溟月」：上善无形（[原作者的投稿](https://www.bilibili.com/opus/1231977657712771073)，CC BY-NC-SA 4.0）
+- 女仆版设计：ZipZipPipe（[素材使用声明](https://t.bilibili.com/1231980045693616162)，CC BY-NC-SA 4.0）
+- 3D 模型：ニケ（Nike）
 
 ## 使用 Charakuru 制作
 
@@ -84,3 +84,4 @@ DeepSeek-chan 是以 AI DeepSeek 为原型的粉丝角色。角色的详细介�
 ## 更新记录
 
 - 2026-10-31：发布修正了脖子根部缝隙的版本
+- 2026-10-31：为与原始角色设计保持一致，将许可证改为 CC BY-NC-SA 4.0
