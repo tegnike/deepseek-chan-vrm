@@ -11,6 +11,17 @@
 
 This is the VRM 1.0 model of DeepSeek-chan. It was made with the character modeling kit [Charakuru (きゃらくる)](https://github.com/nanocle/Charakuru).
 
+> [!NOTE]
+> **This is an unofficial fan work.** DeepSeek-chan is not an official DeepSeek character and is not affiliated with DeepSeek. The DeepSeek name and logo belong to their respective owners.
+
+## About DeepSeek-chan
+
+DeepSeek-chan is a fan character based on the AI DeepSeek. She is a girl who is good at reasoning and coding, and her signatures are her long blue hair and a whale.
+
+- Long, waist-length wavy hair that fades from deep blue to light cyan, with a big ahoge (a single strand sticking up)
+- Blue fin-like ears and a whale tail
+- A long navy maid dress with a white apron that has a whale mark on it
+
 > The Japanese README is the main version. If this English version and the Japanese version differ, the Japanese version applies.
 
 ## Files

@@ -11,6 +11,17 @@
 
 这是 DeepSeek-chan 的 VRM 1.0 模型，使用角色建模工具包 [Charakuru（きゃらくる）](https://github.com/nanocle/Charakuru) 制作。
 
+> [!NOTE]
+> **这是非官方的粉丝作品。** DeepSeek-chan 不是 DeepSeek 的官方角色，与 DeepSeek 没有关联。DeepSeek 的名称和标志归各自的权利人所有。
+
+## 关于 DeepSeek-chan
+
+DeepSeek-chan 是以 AI DeepSeek 为原型的粉丝角色。她是一个擅长推理和编程的女孩，标志是蓝色长发和鲸鱼。
+
+- 从深蓝渐变为浅青色、长及腰部的波浪长发，以及一根大大的呆毛
+- 蓝色鳍状的耳朵和鲸鱼尾巴
+- 藏青色的长款女仆裙，搭配印有鲸鱼图案的白色围裙
+
 > 本项目以日文 README 为主。中文版与日文版内容不一致时，以日文版为准。
 
 ## 文件
