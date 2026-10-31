@@ -16,13 +16,7 @@ This is the VRM 1.0 model of DeepSeek-chan. It was made with the character model
 
 ## About DeepSeek-chan
 
-DeepSeek-chan is a fan character based on the AI DeepSeek. She is a girl who is good at reasoning and coding, and her signatures are her long blue hair and a whale.
-
-- Long, waist-length wavy hair that fades from deep blue to light cyan, with a big ahoge (a single strand sticking up)
-- Blue fin-like ears and a whale tail
-- A long navy maid dress with a white apron that has a whale mark on it
-
-> The Japanese README is the main version. If this English version and the Japanese version differ, the Japanese version applies.
+DeepSeek-chan is a fan character based on the AI DeepSeek. To learn more about the character, see the "[DeepSeek娘](https://zh.moegirl.org.cn/DeepSeek%E5%A8%98)" article on Moegirlpedia (in Chinese).
 
 ## Files
 

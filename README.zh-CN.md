@@ -16,13 +16,7 @@
 
 ## 关于 DeepSeek-chan
 
-DeepSeek-chan 是以 AI DeepSeek 为原型的粉丝角色。她是一个擅长推理和编程的女孩，标志是蓝色长发和鲸鱼。
-
-- 从深蓝渐变为浅青色、长及腰部的波浪长发，以及一根大大的呆毛
-- 蓝色鳍状的耳朵和鲸鱼尾巴
-- 藏青色的长款女仆裙，搭配印有鲸鱼图案的白色围裙
-
-> 本项目以日文 README 为主。中文版与日文版内容不一致时，以日文版为准。
+DeepSeek-chan 是以 AI DeepSeek 为原型的粉丝角色。角色的详细介绍请参阅萌娘百科的「[DeepSeek娘](https://zh.moegirl.org.cn/DeepSeek%E5%A8%98)」词条。
 
 ## 文件
 
