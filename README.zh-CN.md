@@ -70,11 +70,6 @@
 - **表情是用脚本制作的形态键。** `Head` 的形态键被登记为部件表情（`detail_...`），预设表情由它们组合而成。
 - **保留了制作管理用的名称。** Blend 文件中有以 `CharaKit_` 开头的场景和集合。这些是 Charakuru 在制作时用于管理的名称，与 VRM 的运行无关。
 
-### 未包含的内容
-
-- 原始插画和制作过程中生成的图片
-- Charakuru 的项目文件（`project.charakit`，约 1 GB）和制作文件夹（约 29 GB），因文件过大未包含
-
 ## 问题与反馈
 
 如果有在意的地方，请在 [Issues](https://github.com/tegnike/deepseek-chan-vrm/issues) 中告诉我，我会进行修正。
