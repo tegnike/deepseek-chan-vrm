@@ -7,7 +7,7 @@
 <p align="center">
   <img src="docs/images/preview.png" alt="The DeepSeek-chan VRM model in a T-pose, seen from the front, front-left, and back" width="100%">
 </p>
-<p align="center"><sub>The model shown in Blender, without shading. From left: front, front-left, back.</sub></p>
+<p align="center"><sub>The model shown in Blender, without shading and brightened for visibility. From left: front, front-left, back.</sub></p>
 
 This is the VRM 1.0 model of DeepSeek-chan. It was made with the character modeling kit [Charakuru (きゃらくる)](https://github.com/nanocle/Charakuru).
 

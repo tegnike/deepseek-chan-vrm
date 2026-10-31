@@ -7,7 +7,7 @@
 <p align="center">
   <img src="docs/images/preview.png" alt="DeepSeek-chan 的 VRM 模型，T 姿势的正面、左前方和背面" width="100%">
 </p>
-<p align="center"><sub>在 Blender 中显示的模型（无阴影）。从左到右：正面、左前方、背面。</sub></p>
+<p align="center"><sub>在 Blender 中显示的模型（无阴影，为便于查看调亮了画面）。从左到右：正面、左前方、背面。</sub></p>
 
 这是 DeepSeek-chan 的 VRM 1.0 模型，使用角色建模工具包 [Charakuru（きゃらくる）](https://github.com/nanocle/Charakuru) 制作。
 

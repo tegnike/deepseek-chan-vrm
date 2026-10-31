@@ -7,7 +7,7 @@
 <p align="center">
   <img src="docs/images/preview.png" alt="DeepSeek-chanのVRMモデル。正面、斜め前、背面から見たTポーズ" width="100%">
 </p>
-<p align="center"><sub>Blenderで表示したモデル（陰影なし）。左から正面、斜め前、背面。</sub></p>
+<p align="center"><sub>Blenderで表示したモデル（陰影なし、見やすいよう明るさを調整）。左から正面、斜め前、背面。</sub></p>
 
 DeepSeek-chan の VRM 1.0 モデルです。キャラクターモデリングキット[きゃらくる（Charakuru）](https://github.com/nanocle/Charakuru)を使って作りました。
 
