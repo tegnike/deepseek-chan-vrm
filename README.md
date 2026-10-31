@@ -1,6 +1,10 @@
 # DeepSeek-chan VRM
 
 <p align="center">
+  日本語 · <a href="README.en.md">English</a> · <a href="README.zh-CN.md">简体中文</a>
+</p>
+
+<p align="center">
   <img src="docs/images/preview.png" alt="DeepSeek-chanのVRMモデル。正面、斜め前、背面から見たTポーズ" width="100%">
 </p>
 <p align="center"><sub>Blenderで表示したモデル（陰影なし）。左から正面、斜め前、背面。</sub></p>
@@ -68,6 +72,12 @@ VRM に登録した利用条件（[VRM パブリック・ライセンス 1.0](ht
 
 - 元のイラストと、制作の途中で生成した画像
 - きゃらくるのプロジェクトファイル（`project.charakit`、約1GB）と制作フォルダ（約29GB）。サイズが大きいため収録していません。
+
+## 不具合・ご意見
+
+気になったところがあれば、[Issues](https://github.com/tegnike/deepseek-chan-vrm/issues) で教えてください。修正します。
+
+ただ、私は3Dモデルの専門家ではないので、修正は AI を使って行います。ご了承ください。
 
 ## 更新履歴
 
