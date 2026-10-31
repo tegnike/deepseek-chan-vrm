@@ -85,3 +85,4 @@ Please note that I am not a 3D modeling expert, so I make the fixes with AI.
 
 - 2026-10-31: Released the version with the gap at the base of the neck fixed
 - 2026-10-31: Changed the license to CC BY-NC-SA 4.0 to match the original character design
+- 2026-10-31: Fixed the ahoge looking detached from the head
