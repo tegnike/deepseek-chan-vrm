@@ -7,14 +7,15 @@ DeepSeek-chan の声を、音声合成モデル [Qwen3-TTS](https://github.com/Q
 
 ## サンプルボイス
 
-GitHub のファイル画面で再生できます。どれも同じ自己紹介です。
+GitHub のファイル画面で再生できます。すべて Mac・Metal・Q4 で生成しました。
 
-| 言語 | 構成 | 音声 |
+| 言語 | 内容 | 音声 |
 | --- | --- | --- |
-| 中国語訛り風の日本語 | Mac・Metal・Q4 | [intro-mac-q4.mp3](samples/intro-mac-q4.mp3) |
-| 中国語訛り風の日本語 | NVIDIA GPU・PyTorch・BF16 | [intro-pytorch-bf16.mp3](samples/intro-pytorch-bf16.mp3) |
-| 中国語 | Mac・Metal・Q4 | [intro-chinese-mac-q4.mp3](samples/intro-chinese-mac-q4.mp3) |
-| 中国語 | NVIDIA GPU・PyTorch・BF16 | [intro-chinese-pytorch-bf16.mp3](samples/intro-chinese-pytorch-bf16.mp3) |
+| 中国語訛り風の日本語 | 自己紹介 | [intro-mac-q4.mp3](samples/intro-mac-q4.mp3) |
+| 中国語訛り風の日本語 | 日常の会話 | [daily-mac-q4.mp3](samples/daily-mac-q4.mp3) |
+| 中国語訛り風の日本語 | プログラミングの説明 | [coding-mac-q4.mp3](samples/coding-mac-q4.mp3) |
+| 中国語訛り風の日本語 | 驚きや励まし | [emotion-mac-q4.mp3](samples/emotion-mac-q4.mp3) |
+| 中国語 | 自己紹介 | [intro-chinese-mac-q4.mp3](samples/intro-chinese-mac-q4.mp3) |
 
 声のもとになる参照音声は [reference.wav](reference.wav) です。
 
@@ -76,6 +77,25 @@ uv pip install --python .venv/bin/python qwentts-cpp-python==0.5.0 numpy==2.5.4 
 | サンプリング | `temperature=0.9`、`top_k=50`、`top_p=1.0`、`repetition_penalty=1.05` |
 | subtalker | `do_sample=True`、`temperature=0.9`、`top_k=50`、`top_p=1.0` |
 | 行間の無音 | 0.18秒 |
+
+## AITuberKit で喋らせる
+
+[AITuberKit](https://github.com/tegnike/aituber-kit) の「GSVI TTS」設定の接続先として、`server.py` を使えます。AITuberKit 本体の改修は不要です。上の「Mac で生成する」と同じ環境で起動します。
+
+```bash
+.venv/bin/python server.py
+```
+
+`READY http://127.0.0.1:5050/tts` と表示されたら、AITuberKit の設定画面で次のように設定します。
+
+| 項目 | 値 |
+| --- | --- |
+| 合成音声エンジン | GSVI TTS を使用する |
+| GSVI TTS サーバーの URL | `http://127.0.0.1:5050/tts` |
+
+URL を空欄にすると既定のポート 5000 に接続しますが、macOS では AirPlay の受信機能がこのポートを使っています。必ず 5050 を入力してください。
+
+AITuberKit は返事を1文ずつ送ってくるので、1リクエストを1行として生成するだけで、1行ずつの生成になります。別の声にする場合は、`--reference` に自分の参照音声を渡し、`server.py` の `REFERENCE_TEXT` をその音声の台本に書き換えてください。
 
 ## NVIDIA GPU で生成する
 
@@ -161,6 +181,7 @@ for line in lines:
 ## 確認状況
 
 - `generate_mac.py` は、2026-11-06 に新しい環境でモデルを取得し直して実行しました。同じ条件の7行は、2026-10-30 に作った音声と PCM で完全に一致しました。
+- `server.py` は、2026-11-06 に AITuberKit v2.79.0 とつないで、Mac で VRM との会話まで確認しました。
 - GPU 用のコードは最初の制作で使ったものの抜粋で、抜粋の形では実行していません。
 - 中国語を母語とする人による発音の確認はしていません。
 
