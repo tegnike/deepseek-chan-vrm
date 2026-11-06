@@ -2,6 +2,7 @@
 
 - POST /tts に {"text": "..."} を受け取り、WAVを返します。
 - 1リクエストを1行として独立に生成します。前の出力は次へ渡さず、シードも毎回戻します。
+- 生成が止まらず上限まで伸びた行は、文末の読点を句点に替え、シードを変えて作り直します。
 """
 import argparse
 import io
@@ -24,6 +25,9 @@ GGUF_REPO = "Serveurperso/Qwen3-TTS-GGUF"
 GGUF_REVISION = "b7ee2e8c7459c3bea99da23e3d178125a7d1713c"
 REFERENCE_TEXT = "你好呀！今天也来找我聊天啦？我刚刚学会了一点新本领，想第一个分享给你。准备好了吗？那我们开始吧！"
 SEED = 20261030
+FRAMES_PER_SECOND = 12.5
+MAX_NEW_TOKENS = 200  # 約16秒
+ATTEMPTS = 3
 
 
 def main():
@@ -38,20 +42,33 @@ def main():
     audio, _ = sf.read(args.reference, dtype="float32")
     voice = tts.extract_voice_ref(audio)
 
-    def synthesize(text):
+    def generate(text, seed, tokens):
         chunks = []
         for data, sample_rate in tts.stream(
-            text=text, lang="chinese", ref_spk_emb=voice.ref_spk_emb, ref_codes=voice.ref_codes,
-            ref_text=REFERENCE_TEXT, seed=SEED, max_new_tokens=200,
+            text=text, lang="chinese",
+            ref_spk_emb=voice.ref_spk_emb, ref_codes=voice.ref_codes,
+            ref_text=REFERENCE_TEXT, seed=seed, max_new_tokens=tokens,
             repetition_penalty=1.05, temperature=0.9, top_k=50, top_p=1.0,
-            subtalker_do_sample=True, subtalker_temperature=0.9, subtalker_top_k=50, subtalker_top_p=1.0,
+            subtalker_do_sample=True, subtalker_temperature=0.9,
+            subtalker_top_k=50, subtalker_top_p=1.0,
             first_chunk_frames=4, codec_chunk_sec=0.32,
         ):
             chunks.append(np.asarray(data, dtype=np.float32).reshape(-1))
-        wav = np.concatenate(chunks)
+        return np.concatenate(chunks), sample_rate
+
+    def synthesize(text):
+        # 普通の文は1文字0.3秒以内に収まるので、上限は文の長さに合わせる
+        tokens = min(MAX_NEW_TOKENS, max(50, len(text) * 5))
+        for attempt in range(ATTEMPTS):
+            line = text if attempt == 0 else text.rstrip("、,") + "。"
+            wav, sample_rate = generate(line, SEED + attempt, tokens)
+            seconds = len(wav) / sample_rate
+            if seconds < tokens / FRAMES_PER_SECOND - 0.1:
+                break
+            print(f"上限で打ち切り（{attempt + 1}回目）: {text}", flush=True)
         output = io.BytesIO()
         sf.write(output, wav, sample_rate, format="WAV", subtype="PCM_16")
-        return output.getvalue(), len(wav) / sample_rate
+        return output.getvalue(), seconds
 
     class Handler(BaseHTTPRequestHandler):
         def do_POST(self):
