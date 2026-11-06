@@ -24,6 +24,7 @@ DeepSeek-chan 是以 AI DeepSeek 为原型的粉丝角色。角色的详细介�
 | --- | --- |
 | `DeepSeek-chan.vrm` | 完成的 VRM 1.0 模型，可以直接在支持 VRM 的应用中打开。 |
 | `DeepSeek-chan.blend` | 导出 VRM 所用的 Blender 文件（使用 Blender 5.2 和 VRM Add-on for Blender 制作）。贴图已打包在文件内。 |
+| [`voice/`](voice/README.md) | 声音的制作方法（Qwen3-TTS，日语）和声音样本。 |
 
 ## 模型规格
 

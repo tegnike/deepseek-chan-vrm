@@ -24,6 +24,7 @@ DeepSeek-chan is a fan character based on the AI DeepSeek. To learn more about t
 | --- | --- |
 | `DeepSeek-chan.vrm` | The finished VRM 1.0 model. It loads directly in apps that support VRM. |
 | `DeepSeek-chan.blend` | The Blender file the VRM was exported from (made with Blender 5.2 and VRM Add-on for Blender). The textures are packed inside the file. |
+| [`voice/`](voice/README.md) | How the voice was made with Qwen3-TTS (in Japanese), with voice samples. |
 
 ## Model specifications
 

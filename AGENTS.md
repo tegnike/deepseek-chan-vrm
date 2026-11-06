@@ -14,6 +14,7 @@ DeepSeek-chan の VRM 1.0 モデルを配布するリポジトリです。モデ
 | `README.md` | 日本語の README です。これが正です。 |
 | `README.en.md`、`README.zh-CN.md` | 英語版と簡体字中国語版です。 |
 | `LICENSE` | CC BY-NC-SA 4.0 の本文です。 |
+| `voice/` | 声の作り方の手順書（`voice/README.md`）、参照音声、生成スクリプト、サンプルボイスです。 |
 
 このリポジトリにあるのは完成品だけです。制作データ（`project.charakit` と制作フォルダ）は、サイズが大きいため手元のきゃらくるの制作フォルダにだけあります。
 
