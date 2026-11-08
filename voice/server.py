@@ -1,4 +1,6 @@
-"""AITuberKitのGSVI設定から呼べる、中国語訛り風TTSのローカルサーバー（Apple Silicon）。
+"""AITuberKitのGSVI設定から呼べる、中国語訛り風TTSのローカルサーバー。
+
+- MacはMetal（qwentts-cpp）、Windows / LinuxはPyTorch（NVIDIA GPUがなければCPU）で動きます。
 
 - POST /tts に {"text": "..."} を受け取り、WAVを返します。
 - 1リクエストを1行として独立に生成します。前の出力は次へ渡さず、シードも毎回戻します。
@@ -8,18 +10,15 @@ import argparse
 import io
 import json
 import os
+import sys
 import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
-os.environ["GGML_BACKEND"] = "MTL0"
-os.environ.setdefault("OMP_NUM_THREADS", "4")
 
 import numpy as np
 import soundfile as sf
-from huggingface_hub import hf_hub_download
-from qwentts_cpp import QwenTTS
 
 GGUF_REPO = "Serveurperso/Qwen3-TTS-GGUF"
 GGUF_REVISION = "b7ee2e8c7459c3bea99da23e3d178125a7d1713c"
@@ -30,16 +29,17 @@ MAX_NEW_TOKENS = 200  # 約16秒
 ATTEMPTS = 3
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--reference", type=Path, default=Path(__file__).with_name("reference.wav"), help="参照音声（24 kHz、モノラルのWAV）")
-    parser.add_argument("--port", type=int, default=5050)
-    args = parser.parse_args()
+def load_metal(reference):
+    """Mac用。generate(text, seed, max_new_tokens) -> (wav, sample_rate) を返します。"""
+    os.environ["GGML_BACKEND"] = "MTL0"
+    os.environ.setdefault("OMP_NUM_THREADS", "4")
+    from huggingface_hub import hf_hub_download
+    from qwentts_cpp import QwenTTS
 
     talker = hf_hub_download(GGUF_REPO, "qwen-talker-1.7b-base-Q4_K_M.gguf", revision=GGUF_REVISION)
     codec = hf_hub_download(GGUF_REPO, "qwen-tokenizer-12hz-Q4_K_M.gguf", revision=GGUF_REVISION)
     tts = QwenTTS(talker, codec, log_level="warning")
-    audio, _ = sf.read(args.reference, dtype="float32")
+    audio, _ = sf.read(reference, dtype="float32")
     voice = tts.extract_voice_ref(audio)
 
     def generate(text, seed, tokens):
@@ -55,6 +55,23 @@ def main():
         ):
             chunks.append(np.asarray(data, dtype=np.float32).reshape(-1))
         return np.concatenate(chunks), sample_rate
+
+    return generate
+
+
+def main():
+    # Windowsの既定の文字コードでは、中国語の文字を表示するときに止まることがある
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--reference", type=Path, default=Path(__file__).with_name("reference.wav"), help="参照音声（24 kHz、モノラルのWAV）")
+    parser.add_argument("--port", type=int, default=5050)
+    args = parser.parse_args()
+
+    if sys.platform == "darwin":
+        generate = load_metal(args.reference)
+    else:
+        from pytorch_backend import load
+        generate = load(args.reference, REFERENCE_TEXT)
 
     def synthesize(text):
         # 普通の文は1文字0.3秒以内に収まるので、上限は文の長さに合わせる

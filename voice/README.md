@@ -97,29 +97,39 @@ URL を空欄にすると既定のポート 5000 に接続しますが、macOS �
 
 AITuberKit は返事を1文ずつ送ってくるので、1リクエストを1行として生成するだけで、1行ずつの生成になります。生成が止まらない行は、文末の読点を句点に替え、シードを変えて最大3回まで自動で作り直します。上限は文の長さに合わせて短くしています。別の声にする場合は、`--reference` に自分の参照音声を渡し、`server.py` の `REFERENCE_TEXT` をその音声の台本に書き換えてください。
 
-## NVIDIA GPU で生成する
+## Windows で生成する
 
-Windows、Python 3.12.9、RTX 4070（VRAM 12 GB）で作ったときの設定です。バージョンは `qwen-tts==0.1.1`、`transformers==4.57.3`、`torch==2.14.1+cu130` です。7行の生成に約81秒かかりました。
+Windows では PyTorch で動かします。NVIDIA GPU があれば GPU で、なければ CPU で動きます。Linux でも同じスクリプトを使えるはずですが、動作を確認したのは Windows 11 だけです。初回は約3.9 GBのモデルを取得します。
 
-```python
-model = Qwen3TTSModel.from_pretrained(
-    "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
-    device_map="cuda:0", dtype=torch.bfloat16, attn_implementation="sdpa",
-)
-prompt = model.create_voice_clone_prompt(
-    ref_audio="reference.wav",
-    ref_text="你好呀！今天也来找我聊天啦？我刚刚学会了一点新本领，想第一个分享给你。准备好了吗？那我们开始吧！",
-    x_vector_only_mode=False,
-)
-for line in lines:
-    torch.manual_seed(20261030)
-    wavs, sr = model.generate_voice_clone(
-        text=line, language="Chinese", voice_clone_prompt=prompt,
-        non_streaming_mode=True, max_new_tokens=2048,
-    )
+```powershell
+cd voice
+uv venv --python 3.12 .venv
+uv pip install --python .venv\Scripts\python.exe "torch==2.14.1" --index-url https://download.pytorch.org/whl/cu130
+uv pip install --python .venv\Scripts\python.exe "qwen-tts==0.1.1" "transformers==4.57.3" "soundfile==0.14.0"
 ```
 
-モデルのリビジョンは `fd4b254389122332181a7c3db7f27e918eec64e3` です。同じシードでも、Mac と GPU では別の音になります。
+`--index-url` は CUDA 13.0 用です。NVIDIA GPU がない場合は、この指定を外してください。
+
+原稿の形式と使い方は Mac と同じです。
+
+```powershell
+.venv\Scripts\python.exe generate_nvidia.py --script lines.txt --out take-01
+```
+
+AITuberKit とつなぐときも、同じ `server.py` を起動します。
+
+```powershell
+.venv\Scripts\python.exe server.py
+```
+
+実測値は次のとおりです（Windows 11、RTX 4070、Core i7-9700F、メモリ 64 GB）。
+
+| 動かし方 | 音声の長さ | 生成時間 | メモリ |
+| --- | --- | --- | --- |
+| GPU（他のアプリが VRAM を約 8.7 GB 使っている状態） | 2.24 秒 / 4.16 秒 | 約 13 秒 / 約 20 秒 | VRAM 約 4.8 GB、RAM 約 3.2 GB |
+| CPU | 1.84 秒 / 4.16 秒 | 15.5 秒 / 30.4 秒 | RAM 約 9.5 GB |
+
+Windows の PyTorch 版は Mac の GGUF 版より遅く、会話では1文ごとに10秒以上待ちます。使うモデルも違うので、同じシードでも Mac とは別の音になります。
 
 ## 参照音声の作り方
 
@@ -182,7 +192,6 @@ for line in lines:
 
 - `generate_mac.py` は、2026-11-06 に新しい環境でモデルを取得し直して実行しました。同じ条件の7行は、2026-10-30 に作った音声と PCM で完全に一致しました。
 - `server.py` は、2026-11-06 に AITuberKit v2.79.0 とつないで、Mac で VRM との会話まで確認しました。
-- GPU 用のコードは最初の制作で使ったものの抜粋で、抜粋の形では実行していません。
 - 中国語を母語とする人による発音の確認はしていません。
 
 ## 利用条件
