@@ -67,6 +67,8 @@ DeepSeek-chan の VRM 1.0 モデルを配布するリポジトリです。モデ
 - VRM 側では `lookLeft/Right/Up/Down` の preset に上記シェイプキーを `morphTargetBinds` で割り当て、
   `lookAt.type` は `expression`、range map の `outputScale` は 1 にしています。
 - 首元の宝石は上部8頂点を `head` から `chest` へ剛体ウェイトに変更しました。
+- 頭を動かしたときに胸元で髪がめり込むため、胸部コライダーを拡大しました
+  （`chest Collider` 0.12→0.15、`chest Collider.001/.002` 0.08→0.13）。
 - **注意**: この `.blend` には VRM Add-on の表情割り当てデータが保存されていないため、
   再エクスポート時は `lookLeft/Right/Up/Down` のシェイプキー割り当てと range map を再設定してください。
   現在の `.vrm` は直接パッチ済みです。

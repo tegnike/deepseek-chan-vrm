@@ -78,7 +78,7 @@ The fixes made before release (expressions, blinking, fingers, skirt, tail, the 
 
 ## Changelog
 
-- 2026-11-13: Added gaze shape keys and fixed the collar gem stretching with head movement
+- 2026-11-13: Added gaze shape keys, fixed the collar gem stretching with head movement, and fixed hair clipping into the chest when the head turns
 - 2026-10-31: Released the version with the gap at the base of the neck fixed
 - 2026-10-31: Changed the license to CC BY-NC-SA 4.0 to match the original character design
 - 2026-10-31: Fixed the ahoge looking detached from the head
